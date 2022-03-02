@@ -8,66 +8,34 @@ You have been given partial code. The objective is to reproduce the output as sh
    and the output should reflect that as shown in the picture.
 """
 
-from unicodedata import name
 import CourseClass as c
 
 
 def main():
 
-    # name = 'MIS 4322 - Advanced Python'
-    # crn = '250309'
-    # seats = 4
-    # status = 'open'
-    # students = ['John','James','Jill','Jack','Joanne']
+    name = "MIS 4322 - Advanced Python"
+    crn = "250309"
+    seats = 4
+    status = "open"
+    students = ["John", "James", "Jill", "Jack", "Joanne"]
 
-    my_course = c.Course("MIS 4322 - Advanced Python", "250309", 4, "open")
+    my_course = c.Course(name, seats, status, students)
+    seats = 4
 
-    my_student1 = c.Register("John", "250309")
-    my_student2 = c.Register("James", "250309")
-    my_student3 = c.Register("Jill", "250309")
-    my_student4 = c.Register("Jack", "250309")
-
-    print("Student Name:", my_student1.get_student_name())
-    print("Course Name:", my_student1.get_name())
-    print("CRN:", my_student1.get_crn())
-    print("Seats left:", my_student1.get_seats())
-    print()
-
-    print()
-    print("Student Name:", my_student2.get_studentname())
-    print("Course Name:", my_student2.get_name())
-    print("CRN:", my_student2.get_crn())
-    print("Seats left:", my_student2.get_seats())
-    print()
-
-    print()
-    print("Student Name:", my_student3.get_studentname())
-    print("Course Name:", my_student3.get_name())
-    print("CRN:", my_student3.get_crn())
-    print("Seats left:", my_student3.get_seats())
-    print()
-
-    print()
-    print("Student Name:", my_student4.get_studentname())
-    print("Course Name:", my_student4.get_name())
-    print("CRN:", my_student4.get_crn())
-    print("Seats left:", my_student4.get_seats())
-    print()
-
-    if my_student1.get_crn() == my_course.get_crn():
-        seat_count -= my_course.__seats()
-
-    if my_student2.get_crn() == my_course.get_crn():
-        seat_count -= my_course.__seats()
-
-    if my_student3.get_crn() == my_course.get_crn():
-        seat_count -= my_course.__seats()
-
-    if my_student4.get_crn() == my_course.get_crn():
-        seat_count -= my_course.__seats()
-
-    if my_course.get_status() == "closed":
-        print("Sorry ", name, ", registration is closed for MIS 4322 - Advanced Python")
+    for student in students:
+        newstudent = c.Register(student, crn)
+        if seats != 0:
+            seats -= 1
+            print("Student Name:", newstudent.get_name())
+            print("Course Name:", my_course.get_name())
+            print("Seats left:", seats)
+        else:
+            print(
+                "Sorry ",
+                newstudent.get_name(),
+                ", registration is closed for ",
+                my_course.get_name(),
+            )
 
 
 main()
